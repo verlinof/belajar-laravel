@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //get = maksudnya diambil dari url
 // '/' maksudnya root
 Route::get('/', function () {
     return view('home', [
+        "title" => "home",
         "name" => "Verlino Raya Fajri",
         "email" => "verlinorayafajri@mail.ugm.ac.id"
     ]);
 });
+
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "title" => "about",
+        "name" => "Verlino Raya Fajri",
+        "email" => "verlinorayafajri@mail.ugm.ac.id"
+    ]);
 });
-Route::get('/blog', function () {
-    return view('blog');
-});
+
+Route::get('/blog', [PostController::class, 'index']);
+
+//{slug} adalah url yang dijadikan menjadi sebuah variabel, sehingga kita dapat memanggilnya kedalam function kita
+Route::get('blog/{slug}', [PostController::class, 'show']);

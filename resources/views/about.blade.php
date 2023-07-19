@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Verlino BLog | About</title>
-</head>
-<body>
-    <h1>Halaman About</h1>
-</body>
-</html>
+@extends('layouts.main')
+
+@section('jumbotron')
+<h1>Halaman About</h1>
+<h3>Hi, {{ $name }}</h3>
+<p>Contact me: {{ $email }}</p>
+<img src="img/thumbnail.jpg" alt="thumbnail" class="img-thumbnail rounded-circle">
+@endsection
