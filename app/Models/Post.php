@@ -2,32 +2,15 @@
 
 namespace App\Models;
 
-class Post
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
 {
-    static $blog_post = [
-        [
-            "title" => "Postingan pertama",
-            "slug" => "postingan-pertama",
-            "author" => "verlino raya fajri",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam dolores omnis eos nobis quia aspernatur amet saepe vel nesciunt. Asperiores?",
-        ],
-        [
-            "title" => "Postingan kedua",
-            "slug" => "postingan-kedua",
-            "author" => "fadil",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam dolores omnis eos nobis quia aspernatur amet saepe vel nesciunt. Asperiores?lorem ipsum dolor sit amet, tai",
-        ]
-    ];
+    use HasFactory;
 
-    public static function all(){
-        return collect(self::$blog_post);
-    }
-
-    public static function find($slug){
-        //static:: digunakan untuk function sedangkan self:: untuk variable static
-        $posts = static::all();
-        
-        //Arti dari kode dibawah ini adalah, karna kita menggunakan array associative maka "slug" === $slug untuk mencari datanya.
-        return $posts->firstWhere('slug', $slug);
-    }
+    // Fillable digunakan untuk mengatur data apa saja yang dapat diisi jika kita menggunakan method Create()
+    // protected $fillable = ['title','slug','excerpt','body'];
+    // Berkebalikan dengan FIllable, guarded adalah kolom yang tidak dapat kita isi ketika menggunakan method Create()
+    protected $guarded = ['id'];
 }

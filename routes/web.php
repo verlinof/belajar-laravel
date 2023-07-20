@@ -37,4 +37,4 @@ Route::get('/about', function () {
 Route::get('/blog', [PostController::class, 'index']);
 
 //{slug} adalah url yang dijadikan menjadi sebuah variabel, sehingga kita dapat memanggilnya kedalam function kita
-Route::get('blog/{slug}', [PostController::class, 'show']);
+Route::get('blog/{post:slug}', [PostController::class, 'show']);
