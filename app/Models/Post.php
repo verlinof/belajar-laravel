@@ -13,4 +13,8 @@ class Post extends Model
     // protected $fillable = ['title','slug','excerpt','body'];
     // Berkebalikan dengan FIllable, guarded adalah kolom yang tidak dapat kita isi ketika menggunakan method Create()
     protected $guarded = ['id'];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }
